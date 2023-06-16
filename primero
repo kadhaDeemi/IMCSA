@@ -124,22 +124,6 @@
         margin-bottom: 10px;
         box-sizing: border-box;
       }
-      /* Estilos para la lista de ejercicios */
-      #ejercicios {
-        margin-top: 20px;
-      }
-
-      #ejercicios h2 {
-        margin-bottom: 10px;
-      }
-
-      #ejercicios ul {
-        padding-left: 20px;
-      }
-
-      #ejercicios li {
-        margin-bottom: 5px;
-      }
     </style>
   </head>
 
@@ -173,7 +157,7 @@
 
       <div id="tipo-ejercicio">
         <label for="ejercicio">Tipo de ejercicio:</label>
-        <select id="ejercicio" onchange="mostrarEjercicios()">
+        <select id="ejercicio">
           <option value="">Seleccione un tipo de ejercicio</option>
           <option value="aerobico">Aerobico</option>
           <option value="flexibilidad">Flexibilidad</option>
@@ -183,7 +167,6 @@
           <option value="yoga">Yoga</option>
         </select>
       </div>
-      <div id="ejercicios"></div>
     </div>
 
     <script>
@@ -288,69 +271,6 @@
         }
 
         resultado.innerHTML = "Tu IMC es " + imc.toFixed(2) + " - " + categoria;
-      }
-      function mostrarEjercicios() {
-        var tipoEjercicio = document.getElementById("ejercicio").value;
-        var ejerciciosDiv = document.getElementById("ejercicios");
-
-        ejerciciosDiv.innerHTML = "";
-
-        if (tipoEjercicio !== "") {
-          var ejercicios = obtenerEjercicios(tipoEjercicio);
-
-          if (ejercicios.length > 0) {
-            var ejerciciosHTML = "<h2>Ejercicios sugeridos:</h2><ul>";
-
-            for (var i = 0; i < ejercicios.length; i++) {
-              ejerciciosHTML += "<li>" + ejercicios[i] + "</li>";
-            }
-
-            ejerciciosHTML += "</ul>";
-
-            ejerciciosDiv.innerHTML = ejerciciosHTML;
-          }
-        }
-      }
-
-      function obtenerEjercicios(tipo) {
-        var ejercicios = [];
-
-        switch (tipo) {
-          case "aerobico":
-            ejercicios = ["Correr", "Nadar", "Ciclismo"];
-            break;
-          case "flexibilidad":
-            ejercicios = ["Estiramientos", "Yoga", "Pilates"];
-            break;
-          case "fuerza":
-            ejercicios = [
-              "Levantamiento de pesas",
-              "Sentadillas",
-              "Flexiones de brazos"
-            ];
-            break;
-          case "resistencia":
-            ejercicios = [
-              "Carrera de larga distancia",
-              "Ciclismo de resistencia",
-              "Remo"
-            ];
-            break;
-          case "cardio":
-            ejercicios = ["Saltar la cuerda", "Step", "Boxeo"];
-            break;
-          case "yoga":
-            ejercicios = [
-              "Posturas de yoga",
-              "Meditación",
-              "Respiración consciente"
-            ];
-            break;
-          default:
-            break;
-        }
-
-        return ejercicios;
       }
     </script>
   </body>
