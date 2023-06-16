@@ -124,6 +124,22 @@
         margin-bottom: 10px;
         box-sizing: border-box;
       }
+      /* Estilos para la lista de ejercicios */
+      #ejercicios {
+        margin-top: 20px;
+      }
+
+      #ejercicios h2 {
+        margin-bottom: 10px;
+      }
+
+      #ejercicios ul {
+        padding-left: 20px;
+      }
+
+      #ejercicios li {
+        margin-bottom: 5px;
+      }
     </style>
   </head>
 
@@ -157,14 +173,17 @@
 
       <div id="tipo-ejercicio">
         <label for="ejercicio">Tipo de ejercicio:</label>
-        <select id="ejercicio">
+        <select id="ejercicio" onchange="mostrarEjercicios()">
           <option value="">Seleccione un tipo de ejercicio</option>
           <option value="aerobico">Aerobico</option>
           <option value="flexibilidad">Flexibilidad</option>
           <option value="fuerza">Fuerza</option>
           <option value="resistencia">Resistencia</option>
+          <option value="cardio">Cardio</option>
+          <option value="yoga">Yoga</option>
         </select>
       </div>
+      <div id="ejercicios"></div>
     </div>
 
     <script>
@@ -201,7 +220,7 @@
                 "<h2>Sugerencias</h2><ul><li>Consulta con un profesional de la salud para obtener una dieta adecuada.</li><li>Incorpora alimentos nutritivos y ricos en calorías.</li></ul>";
               tipoEjercicio.style.display = "block";
               tipoEjercicio.innerHTML =
-                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="yoga">Yoga</option></select>';
+                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="yoga">Yoga</option><option value="resistencia">Resistencia</option><option value="fuerza">Fuerza</option></select>';
             } else if (imc < 25) {
               categoria = "Peso normal";
               resultado.classList.add("peso-normal");
@@ -209,7 +228,7 @@
                 "<h2>Sugerencias</h2><ul><li>Mantén una alimentación equilibrada y realiza actividad física regularmente.</li></ul>";
               tipoEjercicio.style.display = "block";
               tipoEjercicio.innerHTML =
-                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="pesas">Pesas</option><option value="yoga">Yoga</option></select>';
+                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="flexibilidad">Flexibilidad</option><option value="fuerza">Fuerza</option><option value="aerobico">Aerobico</option></select>';
             } else if (imc < 30) {
               categoria = "Sobrepeso";
               resultado.classList.add("sobrepeso");
@@ -217,7 +236,7 @@
                 "<h2>Sugerencias</h2><ul><li>Reduce el consumo de alimentos ricos en grasas y azúcares.</li><li>Aumenta la actividad física.</li></ul>";
               tipoEjercicio.style.display = "block";
               tipoEjercicio.innerHTML =
-                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="pesas">Pesas</option><option value="yoga">Yoga</option></select>';
+                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="fuerza">Fuerza</option><option value="resistencia">Resistencia</option><option value="cardio">Cardio</option></select>';
             } else {
               categoria = "Obesidad";
               resultado.classList.add("obesidad");
@@ -225,7 +244,7 @@
                 "<h2>Sugerencias</h2><ul><li>Busca ayuda profesional para recibir orientación en la alimentación y ejercicios adecuados.</li><li>Reduce la ingesta de alimentos procesados y calóricos.</li></ul>";
               tipoEjercicio.style.display = "block";
               tipoEjercicio.innerHTML =
-                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="pesas">Pesas</option></select>';
+                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="fuerza">Fuerza</option><option value="resistencia">Resistencia</option><option value="cardio">Cardio</option><option value="yoga">Yoga</option></select>';
             }
           } else if (sexo === "femenino") {
             if (imc < 19) {
@@ -235,7 +254,7 @@
                 "<h2>Sugerencias</h2><ul><li>Consulta con un profesional de la salud para obtener una dieta adecuada.</li><li>Incorpora alimentos nutritivos y ricos en calorías.</li></ul>";
               tipoEjercicio.style.display = "block";
               tipoEjercicio.innerHTML =
-                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="yoga">Yoga</option></select>';
+                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="yoga">Yoga</option><option value="flexibilidad">Flexibilidad</option><option value="fuerza">Fuerza</option></select>';
             } else if (imc < 24) {
               categoria = "Peso normal";
               resultado.classList.add("peso-normal");
@@ -243,7 +262,7 @@
                 "<h2>Sugerencias</h2><ul><li>Mantén una alimentación equilibrada y realiza actividad física regularmente.</li></ul>";
               tipoEjercicio.style.display = "block";
               tipoEjercicio.innerHTML =
-                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="pesas">Pesas</option><option value="yoga">Yoga</option></select>';
+                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="flexibilidad">Flexibilidad</option><option value="fuerza">Fuerza</option><option value="aerobico">Aerobico</option></select>';
             } else if (imc < 29) {
               categoria = "Sobrepeso";
               resultado.classList.add("sobrepeso");
@@ -251,7 +270,7 @@
                 "<h2>Sugerencias</h2><ul><li>Reduce el consumo de alimentos ricos en grasas y azúcares.</li><li>Aumenta la actividad física.</li></ul>";
               tipoEjercicio.style.display = "block";
               tipoEjercicio.innerHTML =
-                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="pesas">Pesas</option><option value="yoga">Yoga</option></select>';
+                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="fuerza">Fuerza</option><option value="resistencia">Resistencia</option><option value="flexibilidad>Flexibilidad</option><option value="cardio">Cardio</option></select>';
             } else {
               categoria = "Obesidad";
               resultado.classList.add("obesidad");
@@ -259,7 +278,7 @@
                 "<h2>Sugerencias</h2><ul><li>Busca ayuda profesional para recibir orientación en la alimentación y ejercicios adecuados.</li><li>Reduce la ingesta de alimentos procesados y calóricos.</li></ul>";
               tipoEjercicio.style.display = "block";
               tipoEjercicio.innerHTML =
-                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="cardio">Cardio</option><option value="pesas">Pesas</option></select>';
+                '<label for="ejercicio">Tipo de ejercicio:</label><select id="ejercicio"><option value="">Seleccione un tipo de ejercicio</option><option value="fuerza">Fuerza</option><option value="resistencia">Resistencia</option><option value="cardio">Cardio</option><option value="yoga">Yoga</option></select>';
             }
           }
         } else {
@@ -269,6 +288,69 @@
         }
 
         resultado.innerHTML = "Tu IMC es " + imc.toFixed(2) + " - " + categoria;
+      }
+      function mostrarEjercicios() {
+        var tipoEjercicio = document.getElementById("ejercicio").value;
+        var ejerciciosDiv = document.getElementById("ejercicios");
+
+        ejerciciosDiv.innerHTML = "";
+
+        if (tipoEjercicio !== "") {
+          var ejercicios = obtenerEjercicios(tipoEjercicio);
+
+          if (ejercicios.length > 0) {
+            var ejerciciosHTML = "<h2>Ejercicios sugeridos:</h2><ul>";
+
+            for (var i = 0; i < ejercicios.length; i++) {
+              ejerciciosHTML += "<li>" + ejercicios[i] + "</li>";
+            }
+
+            ejerciciosHTML += "</ul>";
+
+            ejerciciosDiv.innerHTML = ejerciciosHTML;
+          }
+        }
+      }
+
+      function obtenerEjercicios(tipo) {
+        var ejercicios = [];
+
+        switch (tipo) {
+          case "aerobico":
+            ejercicios = ["Correr", "Nadar", "Ciclismo"];
+            break;
+          case "flexibilidad":
+            ejercicios = ["Estiramientos", "Yoga", "Pilates"];
+            break;
+          case "fuerza":
+            ejercicios = [
+              "Levantamiento de pesas",
+              "Sentadillas",
+              "Flexiones de brazos"
+            ];
+            break;
+          case "resistencia":
+            ejercicios = [
+              "Carrera de larga distancia",
+              "Ciclismo de resistencia",
+              "Remo"
+            ];
+            break;
+          case "cardio":
+            ejercicios = ["Saltar la cuerda", "Step", "Boxeo"];
+            break;
+          case "yoga":
+            ejercicios = [
+              "Posturas de yoga",
+              "Meditación",
+              "Respiración consciente"
+            ];
+            break;
+          default:
+            break;
+        }
+
+        return ejercicios;
       }
     </script>
   </body>
